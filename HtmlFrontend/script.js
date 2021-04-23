@@ -144,3 +144,41 @@ var TempUser =
             console.log(result);
           });
       }    
+
+    //   --------------------------------------------------
+
+function Addnewloginuser()
+{
+var UserName=document.getElementById("username");
+var EmailId=document.getElementById("emailid");
+var Password=document.getElementById("password");
+
+
+var LoginUser = 
+    {
+    "UserName":UserName.value,
+    "EmailId":EmailId.value,
+    "Password":Password.value,
+    }
+
+    fetch("https://localhost:44323/api/Login", 
+    {   
+        method: "POST",
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(TempUser),
+        
+    })
+    //.then(response => response.json())
+    .then(result => {
+        console.log(result);}
+        );
+        window.localStorage.setItem(key, value);
+    }
