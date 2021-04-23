@@ -47,6 +47,7 @@
     <table  style="width:80%; margin: 10vw;">
         <thead>
         <tr>
+            <th style="text-align:center;">Id</th>
             <th style="text-align:center;">FirstName</th>
             <th style="text-align:center;">LastName</th>
             <th style="text-align:center;">Address</th>
@@ -79,7 +80,7 @@
 <div class="container">
     <!-- MODEL FOR UPDATING DETAILS OF USER data-toggle="modal" data-target="#myModal"  -->
     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog" data-toggle="modal" data-target="#myModal"> 
+    <div class="modal fade" id="myModal" role="dialog"> 
       <div class="modal-dialog">
       
         <!-- Modal content-->
@@ -90,7 +91,7 @@
           </div>
 
           <div class="modal-body">
-            <form action="/action_page.php">
+            <form action="">
                 <label for="fname">First name:</label><br>
                 <input type="text" id="Modelsfname" name="fname" value=""><br>
                 <label for="lname">Last name:</label><br>
@@ -100,7 +101,7 @@
                 <label for="lname">City:</label><br>
                 <input type="text" id="Modelscity" name="lname" value=""><br>
                 <br>
-                <input type="submit" value="Update">
+                <button type="button" value="Update", id="mybtnupdate">Confirm update</button>
             </form> 
   
         </div>
