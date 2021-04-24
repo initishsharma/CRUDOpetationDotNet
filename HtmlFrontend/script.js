@@ -145,6 +145,7 @@ var TempUser =
 
     //   --------------------------------------------------
 
+<<<<<<< HEAD
 
 function signup()
 {
@@ -184,17 +185,31 @@ var LoginUser =
     function login()
 {
 var UserName=document.getElementById("username");
+=======
+function Addnewloginuser()
+{
+var UserName=document.getElementById("username");
+var EmailId=document.getElementById("emailid");
+>>>>>>> 4a29f6026df4adb7a4d40800dbc66b2b64e25358
 var Password=document.getElementById("password");
 
 
 var LoginUser = 
     {
     "UserName":UserName.value,
+<<<<<<< HEAD
     "EmailId":"nothing",
     "Password":Password.value,
     }
 
     fetch("https://localhost:44323/api/Login/login", 
+=======
+    "EmailId":EmailId.value,
+    "Password":Password.value,
+    }
+
+    fetch("https://localhost:44323/api/Login", 
+>>>>>>> 4a29f6026df4adb7a4d40800dbc66b2b64e25358
     {   
         method: "POST",
         mode: 'cors', // no-cors, *cors, same-origin
@@ -206,6 +221,7 @@ var LoginUser =
         },
         redirect: 'follow', // manual, *follow, error
         referrerPolicy: 'no-referrer',
+<<<<<<< HEAD
         body: JSON.stringify(LoginUser),
         
     })
@@ -219,3 +235,14 @@ var LoginUser =
 
 
     
+=======
+        body: JSON.stringify(TempUser),
+        
+    })
+    //.then(response => response.json())
+    .then(result => {
+        console.log(result);}
+        );
+        window.localStorage.setItem(key, value);
+    }
+>>>>>>> 4a29f6026df4adb7a4d40800dbc66b2b64e25358
