@@ -26,7 +26,7 @@ fetch("https://localhost:44323/api/values",{
           <td>  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                
             <div  class="btn-group me-2" role="group" aria-label="Second group">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Done..</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#myModal">Done..</button>
               
             </div>
             <div class="btn-group" role="group" aria-label="Third group">
@@ -214,6 +214,7 @@ var LoginUser =
         .then((response) => {
             console.log(response)
         });
+        window.localStorage.setItem(key, value);
     }
 
 
