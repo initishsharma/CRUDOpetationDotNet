@@ -26,7 +26,7 @@ fetch("https://localhost:44323/api/values",{
           <td>  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                
             <div  class="btn-group me-2" role="group" aria-label="Second group">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Update</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Done..</button>
               
             </div>
             <div class="btn-group" role="group" aria-label="Third group">
@@ -109,8 +109,6 @@ var TempUser =
       }
        
 
-
-      document.getElementById("mybtnupdate").addEventListener("click", Updateuser(${user.id}));
    
       function Updateuser(id) {
         var TempFname = document.getElementById("Modelsfname" + id.toString());
@@ -144,3 +142,79 @@ var TempUser =
             console.log(result);
           });
       }    
+
+    //   --------------------------------------------------
+
+
+function signup()
+{
+var UserName=document.getElementById("username");
+var Password=document.getElementById("password");
+
+
+var LoginUser = 
+    {
+    "UserName":UserName.value,
+    "EmailId":"nothing",
+    "Password":Password.value,
+    }
+
+    fetch("https://localhost:44323/api/Login/signup", 
+    {   
+        method: "POST",
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(LoginUser),
+        
+    })
+    //.then(response => response.json())
+    .then((result) => {
+        console.log(result);
+    });
+    }
+
+
+    function login()
+{
+var UserName=document.getElementById("username");
+var Password=document.getElementById("password");
+
+
+var LoginUser = 
+    {
+    "UserName":UserName.value,
+    "EmailId":"nothing",
+    "Password":Password.value,
+    }
+
+    fetch("https://localhost:44323/api/Login/login", 
+    {   
+        method: "POST",
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(LoginUser),
+        
+    })
+    //.then(response => response.json())
+    .then(response => response.text())
+        .then((response) => {
+            console.log(response)
+        });
+    }
+
+
+    
