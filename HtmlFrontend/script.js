@@ -5,6 +5,7 @@ fetch("https://localhost:44323/api/values",{
   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
   credentials: 'same-origin', // include, *same-origin, omit
   headers: {
+    'Authorization': 'Bearer ' + (window.localStorage.getItem("token")),
     'Content-Type': 'application/json'
     // 'Content-Type': 'application/x-www-form-urlencoded',
   },
@@ -26,7 +27,7 @@ fetch("https://localhost:44323/api/values",{
         <td>  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
              
           <div  class="btn-group me-2" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Done..</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="Datapass('${user.firstName}','${user.lastName}','${user.city}')">Done..</button>
             
           </div>
           <div class="btn-group" role="group" aria-label="Third group">
@@ -45,6 +46,25 @@ console.log(data);
 console.log('Looks like there was a problem: \n', error);
 });
 
+
+function Datapass(model,reg,workdone)
+{
+var a = document.getElementById("modelform");
+var b = document.getElementById("regform");
+var c = document.getElementById("workform");
+
+a.value=model;
+b.value=reg;
+c.value=workdone;
+
+console.log("wah");
+  // console.log(model);
+// console.log(reg);
+// console.log(workdone);
+
+
+
+}
 
 
           
@@ -105,7 +125,7 @@ var TempUser =
         .then((result) => {
           console.log(result);
         });
-        alert("USER DELETED");
+        alert("CAR DELETED");
     }
      
 
@@ -177,6 +197,7 @@ var LoginUser =
   //.then(response => response.json())
   .then((result) => {
       console.log(result);
+      alert("Signedup Successful");
   });
   }
 
@@ -201,6 +222,7 @@ var LoginUser =
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
+        
         'Content-Type': 'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -212,10 +234,55 @@ var LoginUser =
   //.then(response => response.json())
   .then(response => response.text())
       .then((response) => {
-          console.log(response)
+        window.localStorage.setItem('token', response);
+        window.localStorage.getItem('token').toString();
+              openpage();
+        
       });
-      window.localStorage.setItem(key, value);
+           
+  }
+ 
+  function openpage(){
+    window.open("http://127.0.0.1:5500/index.html", "_blank");
   }
 
+function Addcontact()
+{
+var cname=document.getElementById("contactname");
+var cemail=document.getElementById("contactemail");
+var cphone=document.getElementById("contactphone");
+var cabout=document.getElementById("contactabout");
 
+var ContactInfo = 
+  {
+  "Name":cname.value,
+  "Email":cemail.value,
+  "Phone":cphone.value,
+  "about":cabout.value
+  }
+
+  fetch("https://localhost:44323/api/values/addcontact", 
+  {   
+      method: "POST",
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(ContactInfo)
+  })
+  //.then(response => response.json())
+  .then(result => {
+      console.log(result);
+      alert("BOOKED SUCCESSFULLY, We will contact you shortly");
+    }
+      );
+  }
   
+
+  // -------------------------- 
+
